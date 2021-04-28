@@ -22,6 +22,13 @@ then install the package thorough your environment:
 $ pip install azure_integration-0.0.1-py3-none-any.whl
 ```
 
+you need to set these env variables in order to access to azure:
+```shell
+AZURE_CLIENT_ID=YOUR_CLIENT_ID
+AZURE_CLIENT_SECRET=YOUR_CLIENT_SECRET
+AZURE_TENANT_ID=YOUR_TENANT_ID
+```
+
 then you can use it like this:
 ```python
 from keyvault import SecretClient
