@@ -1,20 +1,45 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Azure Integration
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+this package is an azure integration to use in DTRG team.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+for now, we just have vault integration in the package.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+# HOW TO USE
+first, get the package from azure artifacts:
+```shell
+$ az artifacts universal download \
+  --organization "https://dev.azure.com/keyleadhealth/" \
+  --project "da4824a3-d087-4024-a144-a3d3265a9d6e" \
+  --scope project \
+  --feed "azure-integration" \
+  --name "azure-integration" \
+  --version "0.0.1" \
+  --path .
+```
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+then install the package thorough your environment:
+```shell
+$ pip install azure_integration-0.0.1-py3-none-any.whl
+```
+
+then you can use it like this:
+```python
+from keyvault import SecretClient
+
+client = SecretClient(VAULT_NAME)
+client.get_secret(SECRET_NAME)  # this returns KeyVaultSecret object
+client.get_secret(SECRET_NAME).value  # this returns secret value as string
+```
+
+# HOW TO BUILD
+if you want to build the module yourself follow the steps:
+- clone this repository.
+- create a venv inside it.
+- install requirements by running:
+```shell
+$ pip install -r requirements.txt
+```
+- then build it:
+```shell
+$ python -m build
+```
