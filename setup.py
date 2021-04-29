@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="azure-integration",  # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Mehran Zolghadr",
     author_email="mehran@keyleadhealth.com",
     description="Microsoft Azure Integration",
@@ -55,5 +55,6 @@ setuptools.setup(
         "six==1.15.0",
         "toml==0.10.2",
         "urllib3==1.26.4",
+        "gobject"
     ],
 )
