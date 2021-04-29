@@ -5,6 +5,7 @@ this package is an azure integration to use in the DTRG team.
 for now, we just have vault integration in the package.
 
 # HOW TO USE
+### - From pypi
 first, you need to install the package. to do so create a personal access token and then connect to the feed [according to these instructions.](https://dev.azure.com/keyleadhealth/Klinik/_packaging?_a=connect&feed=azure-integration) (choose pip)
 
 then install the package:
@@ -12,7 +13,8 @@ then install the package:
 $ pip install azure-integration==0.0.2
 ```
 
-also, there's another way to get the package from azure artifacts:
+### - From Azure Artifacts
+there's another way to get the package from azure artifacts, by running this command:
 ```shell
 $ az artifacts universal download \
   --organization "https://dev.azure.com/keyleadhealth/" \
