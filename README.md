@@ -1,6 +1,6 @@
 # Azure Integration
 
-this package is an azure integration to use in DTRG team.
+this package is an azure integration to use in the DTRG team.
 
 for now, we just have vault integration in the package.
 
@@ -17,12 +17,12 @@ $ az artifacts universal download \
   --path .
 ```
 
-then install the package thorough your environment:
+then install the package through your environment:
 ```shell
 $ pip install azure_integration-0.0.1-py3-none-any.whl
 ```
 
-you need to set these env variables in order to access to azure:
+you need to set these env variables to access to azure:
 ```shell
 AZURE_CLIENT_ID=YOUR_CLIENT_ID
 AZURE_CLIENT_SECRET=YOUR_CLIENT_SECRET
@@ -37,6 +37,22 @@ client = SecretClient(VAULT_NAME)
 client.get_secret(SECRET_NAME)  # this returns KeyVaultSecret object
 client.get_secret(SECRET_NAME).value  # this returns secret value as string
 ```
+
+also, you can get a dict of secrets wherever you need, ex setting.py:
+```python
+from keyvault import SecretClient
+
+[... whatever settings ...]
+
+client = SecretClient(VAULT_NAME)
+needed_secrets = {
+    "SECRET_NAME": "SECRET_VERSION", # you can leave version blank
+    "SECOND_SECRET_NAME": "SECOND_SECRET_VERSION"
+}
+c.get_secrets(needed_secrets)  # this will return results as KeyVaultSecret
+c.get_secrets_values(needed_secrets)  # this will return results as str
+```
+note that you don't need to assign `get_secrets` and `get_secrets_values` functions' return value and that's because it will modify the given dict object and you can access the values within it.
 
 # HOW TO BUILD
 if you want to build the module yourself follow the steps:
