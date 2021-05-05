@@ -11,9 +11,10 @@ setuptools.setup(
     description="Microsoft Azure Integration",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://dev.azure.com/keyleadhealth/Klinik/_git/azure-integrations-python",
+    url="https://github.com/IOMehran/azure-integration",
+    download_url="https://github.com/IOMehran/azure-integration/archive/refs/tags/v0.0.3.tar.gz",
     project_urls={
-        "Bug Tracker": "https://dev.azure.com/keyleadhealth/Klinik/_git/azure-integrations-python/issues",
+        "Bug Tracker": "https://github.com/IOMehran/azure-integration/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",
