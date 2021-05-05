@@ -10,25 +10,7 @@ first, you need to install the package. to do so create a personal access token 
 
 then install the package:
 ```shell
-$ pip install azure-integration==0.0.2
-```
-
-### - From Azure Artifacts
-there's another way to get the package from azure artifacts, by running this command:
-```shell
-$ az artifacts universal download \
-  --organization "https://dev.azure.com/keyleadhealth/" \
-  --project "da4824a3-d087-4024-a144-a3d3265a9d6e" \
-  --scope project \
-  --feed "azure-integration" \
-  --name "azure-integration" \
-  --version "0.0.2" \
-  --path .
-```
-
-then install the package using pip through your environment:
-```shell
-$ pip install azure_integration-0.0.1-py3-none-any.whl
+$ pip install azure-integration # this will install latest version.
 ```
 
 you need to set these env variables to access to azure:
@@ -38,7 +20,8 @@ AZURE_CLIENT_SECRET=YOUR_CLIENT_SECRET
 AZURE_TENANT_ID=YOUR_TENANT_ID
 ```
 
-then you can use it like this:
+### Secret Client
+to use secret client you can do something like this:
 ```python
 from keyvault import SecretClient
 
@@ -62,6 +45,23 @@ c.get_secrets(needed_secrets)  # this will return results as KeyVaultSecret
 c.get_secrets_values(needed_secrets)  # this will return results as str
 ```
 note that you don't need to assign `get_secrets` and `get_secrets_values` functions' return value and that's because it will modify the given dict object and you can access the values within it.
+
+### Service Name Finder
+__this utility is implemented to use in dtrg projects.__
+
+this utility will help you find needed credentials such as key vault name, postgres server address and postgres admin password secret name.
+remember in development environment you should set WEBSITE_SITE_NAME to a valid website name according to patterns we use in dtrg project.
+
+you can use it simply:
+```python
+from dtrg_specified import ServiceNameFinder
+
+service_name_finder = ServiceNameFinder()
+service_name_finder.kv_name # will return key vault name
+service_name_finder.psql_host # will return postgres host host
+service_name_finder.psql_password_secret_name # will return postgres password secret name
+
+```
 
 # HOW TO BUILD
 if you want to build the module yourself follow the steps:
